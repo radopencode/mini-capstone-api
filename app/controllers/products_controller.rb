@@ -18,7 +18,7 @@ end
 def show
  product_id = params[:id]
  product = Product.find_by(id: product_id)
-  render json - one_product.as_json
+  render json - one_product.as_json(methods:[:is_discouted?, :tax, :total])
   
 end
 
