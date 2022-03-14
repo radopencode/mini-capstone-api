@@ -5,10 +5,10 @@ class ProductsController < ApplicationController
   end
 end
 
-def product_all
-  input_value = params
-  render json: 
-end
+  def product_all
+    input_value = params
+    render json: 
+  end
 def one_product
   product_id = params["id"]
   product = Product.find_by(id: product_id)
@@ -45,5 +45,14 @@ def update
   product.image_url = params["image_url"] || product.image_url
 
   product.save
+  render json: product.as_json
+end
+
+def destroy
+
+  product_id = params[:id]
+  product = Product.find_by(id: product_id)
+
+  product.destroy
   render json: product.as_json
 end
