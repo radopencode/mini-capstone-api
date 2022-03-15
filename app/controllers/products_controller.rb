@@ -15,17 +15,33 @@ def one_product
   render json: product.as_json
 end
 
+# def show
+#  product_id = params[:id]
+#  product = Product.find_by(id: product_id)
+#   render json: one_product.as_json(methods:[:is_discouted?, :tax, :total])
+  
+# end
+
 def show
  product_id = params[:id]
  product = Product.find_by(id: product_id)
-  render json - one_product.as_json(methods:[:is_discouted?, :tax, :total])
+ @product = product
+  render template: "products/show"
   
 end
+
+
+# def index
+#   one_product_id = params[:id]
+#   one_product = Product.find_by(id:one_product)
+#   render json = one_product.as_json
+# end
 
 def index
   one_product_id = params[:id]
   one_product = Product.find_by(id:one_product)
-  render json = one_product.as_json
+  @product = product
+  render template: "products/index"
 end
 
 def create
