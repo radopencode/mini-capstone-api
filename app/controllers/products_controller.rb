@@ -26,7 +26,7 @@ def show
  product_id = params[:id]
  product = Product.find_by(id: product_id)
  @product = product
-  render template: "products/show"
+render template: "products/show"
   
 end
 

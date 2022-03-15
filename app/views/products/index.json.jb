@@ -7,5 +7,8 @@
   description: product.description,
   id: product.id,
   url: product_url(product, format: :json)
+  is_discouted?: product.is is_discouted?,
+  tax: product.tax,
+  total: product.total
   }
 end
