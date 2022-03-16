@@ -1,19 +1,21 @@
 class Product < ApplicationRecord
-  def is_discouted?
-    if price < 10
-      return "true"
-    else
-      return "false"
-    end
-  end
+  validates :name,  presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+  validates :name, presence: true
+
+
+
+ def is_discouted
+    return price < 10
+ end
 
   def tax
-    tax = price * 0.09
-    return tax
+   
+    return [price * 0.09]round(2)
   end
 
   def total
-    total = tax + price
-    return total
+    return tax + price
   end
 end

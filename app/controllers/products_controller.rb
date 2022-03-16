@@ -23,7 +23,7 @@ end
 # end
 
 def show
- product_id = params[:id]
+ product = params[:id]
  product = Product.find_by(id: product_id)
  @product = product
 render template: "products/show"
@@ -38,16 +38,15 @@ end
 # end
 
 def index
-  one_product_id = params[:id]
-  one_product = Product.find_by(id:one_product)
-  @product = product
+  
+  @products = Product.all
   render template: "products/index"
 end
 
 def create
-  one_product = Product.create (name =params ["name"], description = params ["description"], price = params ["price"], image_url = params ["image_url"]
+  @product = Product.new(name: params ["name"], description = params ["description"], price = params ["price"], image_url = params ["image_url"]
 
-  product.save
+  if@product.save
 
   render json = one_product.as_json
 end
@@ -60,8 +59,16 @@ def update
   product.price = params["price"] || product.price
   product.image_url = params["image_url"] || product.image_url
 
-  product.save
-  render json: product.as_json
+ product.save
+ render json: product.as_json
+ if product.save
+  render json: show
+  
+ else
+  render json: {errors: product.errors.full_messages}, status: 422
+ end
+  
+end
 end
 
 def destroy
