@@ -10,5 +10,6 @@
   is_discouted?: product.is is_discouted?,
   tax: product.tax,
   total: product.total
+  supplier: product.supplier
   }
 end
