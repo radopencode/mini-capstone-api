@@ -55,12 +55,15 @@ Content-Type: application/json
 }
 
 ### orders create
-GET http://localhost:3000/orders
+POST http://localhost:3000/orders
 Content-Type: application/json
 
-{ "user_id": "3", "product_id": "3", "quantity": "3", "subtotal": "40", 
-"tax": "5", 
-"total":"45"
+{ "user_id": 3, "product_id": 3, "quantity": 3, "subtotal": 40, 
+"tax": 5, 
+"total":45
   
 }
-      
+  
+### ORDERS SHOW
+
+GET http://locatlhost:3000/orders/1
