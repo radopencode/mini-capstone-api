@@ -38,7 +38,7 @@ end
 # end
 
 def index
-  
+  pp 
   @products = Product.all
   render template: "products/index"
 end

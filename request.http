@@ -21,3 +21,46 @@ Content-Type: application/json
 
 DELETE http://localhost:3000/product/1
 Content-Type: application/json
+
+
+### Users create (signup)
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "name": "Test name",
+  "email": "test@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password"
+}
+
+### Photos create
+POST http://localhost:3000/photos.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjozLCJleHAiOjE2Mjk5OTI4NjR9.G2ExsrDYn3oE0vJkvm4T6Po2GbNpH5cqTEaVPVuK_MA
+Content-Type: application/json
+
+{
+  "name": "Test name",
+  "width": 640,
+  "height": 480
+}
+
+### orders create
+GET http://localhost:3000/orders
+Content-Type: application/json
+
+{ "user_id": "3", "product_id": "3", "quantity": "3", "subtotal": "40", 
+"tax": "5", 
+"total":"45"
+  
+}
+      

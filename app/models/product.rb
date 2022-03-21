@@ -16,11 +16,13 @@ class Product < ApplicationRecord
 
   has_many :images
 
+  has_many :orders
+
   def is_discouted
     if price <= 10
-     return true
+      return true
     else
-      return false 
+      return false
     end
   end
 
