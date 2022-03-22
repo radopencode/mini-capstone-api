@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   # def images
   #   Image.where(product_id: id)
   # end
+ 
 
   belongs_to :supplier
 

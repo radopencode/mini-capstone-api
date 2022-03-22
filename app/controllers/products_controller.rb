@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin, except:
+  [:index, :show] 
+ 
+ 
   def shop
     better_than_amazon = Product.all
     render json: better_than_amazon.as_json
@@ -44,6 +48,7 @@ def index
 end
 
 def create
+  
   @product = Product.new(name: params ["name"], description = params ["description"], price = params ["price"], image_url = params ["image_url"]
 
   if@product.save

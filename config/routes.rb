@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/products/:id" => "one_product#index"
   post "/users" => "users#create"
   post "/sessions" => "sessions#create"
-  post "/orders/:id " => "orders#create"
+  post "/orders" => "orders#create"
   get "/orders/:id" => "orders#show"
+  get "/orders" => "orders#index"
 end

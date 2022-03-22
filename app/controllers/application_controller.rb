@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
+  before_action :authenticate_admin, except:
+  [:index, :show]
+  
   def current_user
     auth_headers = request.headers["Authorization"]
     if auth_headers.present? && auth_headers[/(?<=\A(Bearer ))\S+\z/]
@@ -22,4 +25,8 @@ class ApplicationController < ActionController::API
       render json: {}, status: :unauthorized
     end
   end
+
+  def authenticate_admin
+    unless current_user && current_user.admin
+      render json: {}, status: :unauthorized
 end

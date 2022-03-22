@@ -1,6 +1,24 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user
+ 
   def create
-    @order = Order.new  (user_id: params["user_id"], product_id: params["product_id"], quantity: params ["quantity"], subtotal: params["subtotal"], tax: params["tax"], total: ["total"])
+    product = Product.find_by(id: params[product_id])
+
+    calculated_subtotal = product.price * params[:quantity]
+    calculated_tax = calculated_subtotal * 0.09
+    calculated_total = calculated_subtotal + calculated_tax
+    @order = Order.new  
+    (user_id: current_user.id, 
+      # product_id: params[:product_id], 
+      quantity: params [:quantity], 
+      subtotal: calculated_subtotal,
+      product_id: params[:product_id],
+      tax: calculated_tax
+      total: calculated_total
+      
+      
+          
+    )
     render :json order.as_json
 
     if order.save
@@ -12,17 +30,20 @@ class OrdersController < ApplicationController
   end
     
   def show
-   order_id = params[:id]
-    order = Order.find_by(id: order_id)
-    render json: order.as_json
-    # @order = orders
-  #  render template: "orders/show"
+    @order = current_user.orders.find_by(id: params[:id])
+    # render json: order
+   
+  render template: "orders/show"
   end
+end
 
   def index
-    pp 
-    @orders = Order.all
-    render template: "orders/index"
+    if current_user
+      @orders = current_user.orders
+      render template: "orders/index"
+    else
+      render json: [], status: :unauthorized
+
   end
 end
 
