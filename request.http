@@ -2,6 +2,9 @@
 @jwt =
 
 
+### Poducts Index
+
+GET http://localhost:3000/products.json?category=books
 
 POST http://localhost:3000/one_product
 Content-Type: application/json

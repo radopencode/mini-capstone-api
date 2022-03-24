@@ -42,9 +42,15 @@ end
 # end
 
 def index
-  pp 
+  
+ 
   @products = Product.all
+  if params[:category]
+    category = Category.find_by(name: params[:category])
+    @products = products.category
+  end
   render template: "products/index"
+ 
 end
 
 def create
