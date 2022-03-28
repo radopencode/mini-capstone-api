@@ -93,7 +93,7 @@ GET http://localhost:3000/carted_product.json
 Authorization: Bearer {{jwt}}
 
 ### CARTED_PRODUCT CREATE
-POST http://localhost:3000/carted_products
+POST http://localhost:3000/carted_products.json
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
